@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+  
+
+	<!-- 전체조회 -->
+	<select id="member_list"  resultType="member">
+	    select * from member order by m_idx
+	</select> 
+	
+	<!-- m_idx 1건조회  -->
+	<select id="member_one_m_idx"  parameterType="int"  resultType="member">
+	    select * from member where m_idx=#{ m_idx }
+	</select>
+	
+	<!-- m_id 1건조회  -->
+	<select id="member_one_m_id"  parameterType="String"  resultType="member">
+	    select * from member where m_id=#{ m_id }
+	</select>
+	
+	<!-- 추가 -->
+	<insert id="member_insert"  parameterType="member">
+	   insert  into  member  values( 
+	                 (select nvl(max(m_idx),0) + 1 from member),
+	                 #{ m_name },
+	                 #{ m_id },
+	                 #{ m_pwd },
+	                 #{ m_zipcode },
+	                 #{ m_addr },
+	                 #{ m_ip },
+	                 sysdate,
+	                 #{ m_grade }
+	                 )
+	</insert>
+	
+	<!-- 삭제 -->
+	<delete id="member_delete"  parameterType="int">
+	   delete from member where m_idx = #{ m_idx }
+	</delete>
+	
+	<!-- 수정 -->
+	<update id="member_update"  parameterType="member">
+	    update member set m_name=#{ m_name },
+	                      m_id=#{ m_id },
+	                      m_pwd=#{ m_pwd },
+	                      m_zipcode=#{ m_zipcode },
+	                      m_addr=#{ m_addr },
+	                      m_ip=#{ m_ip },
+	                      m_grade=#{ m_grade } 
+	     where m_idx=#{ m_idx }
+	
+	</update>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
