@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- constructor Injection-->
+	<!-- MemberDaoImpl -->
+	<bean id="member_dao"  class="dao.MemberDaoImpl">
+	    <property name="sqlSession"  ref="sqlSession"/>
+	</bean>
+	
+	<!-- RPlaceDaoImpl -->
+	<bean id="rplace_dao"  class="dao.RPlaceDaoImpl">
+	    <property name="sqlSession"  ref="sqlSession"/>
+	</bean>
+	
+	<!--  NoticeDaoImpl  -->
+	<bean id="notice_dao" class="dao.NoticeDaoImpl">
+	<property name="sqlSession" ref="sqlSession"/>
+	</bean>
+	
+	<!-- BmkPlaceDaoImpl -->
+	<bean id="bmkplace_dao"  class="dao.BmkPlaceDaoImpl">
+	    <property name="sqlSession"  ref="sqlSession"/>
+	</bean>
+	
+	<!-- BmkGoodsDaoImpl -->
+	<bean id="bmkgoods_dao"  class="dao.BmkGoodsDaoImpl">
+	    <property name="sqlSession"  ref="sqlSession"/>
+	</bean>
+	
+	<!-- CampProductDaoImpl -->
+	<bean id="campproduct_dao"  class="dao.CampProductDaoImpl">
+	    <property name="sqlSession"  ref="sqlSession"/>
+	</bean>
+
+</beans>
